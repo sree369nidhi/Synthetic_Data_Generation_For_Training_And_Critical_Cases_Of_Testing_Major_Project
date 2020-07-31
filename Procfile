@@ -1,1 +1,1 @@
-web: sh setup.sh && streamlit run synth_st_final.py
+web: sh setup.sh && streamlit run Synthetic_Data_Generation_For_Training_And_Critical_Cases_Of_Testing_Major_Project_2020.py
