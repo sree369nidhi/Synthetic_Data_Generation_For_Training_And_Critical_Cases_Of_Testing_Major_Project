@@ -4,7 +4,6 @@ import streamlit.components.v1 as components
 import PIL.Image
 import numpy as np
 import tensorflow as tf
-import tensorflow_hub as hub
 import time
 from PIL import Image
 
