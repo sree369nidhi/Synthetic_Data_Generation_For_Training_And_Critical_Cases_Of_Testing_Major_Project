@@ -1,0 +1,1 @@
+web: sh setup.sh && streamlit run synth_st_final.py
