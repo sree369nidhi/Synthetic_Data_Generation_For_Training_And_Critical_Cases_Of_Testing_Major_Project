@@ -4,8 +4,10 @@ import streamlit.components.v1 as components
 import PIL.Image
 import numpy as np
 import tensorflow as tf
+import tensorflow_hub as hub
 import time
 from PIL import Image
+import os
 
 def stylize():
     
@@ -41,10 +43,10 @@ with open("style.css") as f:
 
 st.write("<h2 style='text-align: center ; color: black;'>Team : M.Sreenidhi Iyengar, K.Rajesh, K.Geethika, K.Sindhuja</h2>", unsafe_allow_html=True,)
 
+progan = hub.load("https://tfhub.dev/google/progan-128/1").signatures['default']
+
 def generate():
 	latent_dim = 512
-	progan = hub.load("dcgan/").signatures['default']
-	
 	vector = tf.random.normal([1, latent_dim])
 	image = progan(vector)['default']
 	image = tf.constant(image)
@@ -52,6 +54,7 @@ def generate():
 	return PIL.Image.fromarray(image.numpy()[0])
 
 image = generate()
+
 width = st.slider('Adjustable Image Size', 150, 600, 200)
 st.image(image, caption='Synthetic Image', width= width,)
 
